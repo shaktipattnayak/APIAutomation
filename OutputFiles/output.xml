@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.1 (Python 3.7.0 on darwin)" generated="20211014 18:15:51.211" rpa="false" schemaversion="2">
+<suite id="s1" name="Symptom Reporting API Tests" source="/Users/shakti/AudaxHealthInc/TestZone/TestCases/Symptom_Reporting_API_Tests.robot">
+<kw name="Initial Setup" type="SETUP">
+<kw name="Login User" library="API_Helper">
+<doc>Logging in a user and get the session token.</doc>
+<kw name="Create Session" library="RequestsLibrary">
+<arg>url</arg>
+<arg>${base_url}</arg>
+<arg>verify=True</arg>
+<doc>Create Session: create a HTTP session to a server</doc>
+<msg timestamp="20211014 18:15:53.176" level="INFO">Creating Session using : alias=url, url=https://dev.np-testzonehealth.com, headers={},                     cookies={}, auth=None, timeout=None, proxies=None, verify=True,                     debug=0 </msg>
+<status status="PASS" starttime="20211014 18:15:53.175" endtime="20211014 18:15:53.177"/>
+</kw>
+<kw name="GET On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url</arg>
+<arg>${user_credential}</arg>
+<doc>Sends a GET request on a previously created HTTP Session.</doc>
+<msg timestamp="20211014 18:15:55.697" level="INFO">GET Request : url=https://dev.np-testzonehealth.com/admin/token/dev122@yopmail.com/Test@123 
+ path_url=/admin/token/dev122@yopmail.com/Test@123 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive'} 
+ body=None 
+ </msg>
+<msg timestamp="20211014 18:15:55.697" level="INFO">GET Response : url=https://dev.np-testzonehealth.com/admin/token/dev122@yopmail.com/Test@123 
+ status=200, reason= 
+ headers={'Date': 'Thu, 14 Oct 2021 12:45:55 GMT', 'Content-Type': 'text/plain;charset=ISO-8859-1', 'Content-Length': '1033', 'Connection': 'keep-alive', 'Server': 'nginx/1.20.0', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'X-Frame-Options': 'DENY'} 
+ body=eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS00YjM3LTg4NzctYmZmMjNhOGNkOWRiIiwiYXVkIjoiMmVyaG5qdG8wc21wcWUxMzhhaTRqc210dGMiLCJldmVudF9pZCI6IjI3Mzg4ZjhkLTA3M2EtNGJlMy1iODVkLWI4NWFhNTI2NWU3YSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjM0MjE1NTU1LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV81Q3J6QTNLSTUiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGV2MTIyQHlvcG1haWwuY29tIiwiZXhwIjoxNjM0MzAxOTU1LCJpYXQiOjE2MzQyMTU1NTUsImp0aSI6ImU5NjUzZTM2LTQ1OGItNDY2ZS04OWM3LWI4NmQ2MDEyMThhYiIsImVtYWlsIjoiZGV2MTIyQHlvcG1haWwuY29tIn0.C24ba3S_cVgvmyJ0rkRbkd-fUuQ53t0G-py8CDTOLvYrchCtyuMOkGhchqPz7D-5XBuWhPlV_Nk2Pok9qpjJsN7JHyu9z82bMG6ujhQxnfO4XO0phFImzAwHNGh8ByWiKvpBcjwq_k7bXrwubwDGl3MF5PU9OJx_5PJtctE4lCEiek25-XUKhfdDS71uSH-0crw4On25a8sePnyWKRHVej5Tq2Pzy4f3zii3AqVGopl3f51UQ0QzlGLqqn0J5DknvAelDUVvu5jKVB8thZcrWYWLAEd4G48Puo1iTPMX_eV1Hfr2BZ27zWczi5H-UXaAAkFFVgjPGGJQ9b0HN1Z-SQ 
+ </msg>
+<msg timestamp="20211014 18:15:55.697" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211014 18:15:53.177" endtime="20211014 18:15:55.697"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20211014 18:15:55.699" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20211014 18:15:55.697" endtime="20211014 18:15:55.699"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${status_code}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211014 18:15:55.699" level="INFO">200</msg>
+<status status="PASS" starttime="20211014 18:15:55.699" endtime="20211014 18:15:55.699"/>
+</kw>
+<kw name="Catenate" library="BuiltIn">
+<var>${user_token}</var>
+<arg>Bearer</arg>
+<arg>${response.content}</arg>
+<doc>Catenates the given items together and returns the resulted string.</doc>
+<msg timestamp="20211014 18:15:55.700" level="INFO">${user_token} = Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS...</msg>
+<status status="PASS" starttime="20211014 18:15:55.699" endtime="20211014 18:15:55.700"/>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<arg>${user_token}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<msg timestamp="20211014 18:15:55.701" level="INFO">${user_token} = Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS...</msg>
+<status status="PASS" starttime="20211014 18:15:55.700" endtime="20211014 18:15:55.701"/>
+</kw>
+<status status="PASS" starttime="20211014 18:15:53.174" endtime="20211014 18:15:55.701"/>
+</kw>
+<status status="PASS" starttime="20211014 18:15:53.171" endtime="20211014 18:15:55.701"/>
+</kw>
+<test id="s1-t1" name="Validate User Login">
+<kw name="Get Login Data" library="Symptom_Reporting_Payload">
+<var>${login_data}</var>
+<msg timestamp="20211014 18:15:55.706" level="INFO">${login_data} = ['/admin/token/dev192@yopmail.com/Test@129', '/admin/token/dev20@yopmail.com/Test@122', '/user/token/dev120@yopmail.com/Test@122']</msg>
+<status status="PASS" starttime="20211014 18:15:55.706" endtime="20211014 18:15:55.706"/>
+</kw>
+<for flavor="IN">
+<var>${data}</var>
+<value>@{login_data}</value>
+<iter>
+<var name="${data}">/admin/token/dev192@yopmail.com/Test@129</var>
+<kw name="Check Login User" library="symptom_registration">
+<var>${status}</var>
+<arg>${data}</arg>
+<msg timestamp="20211014 18:15:56.683" level="INFO">${status} = 500</msg>
+<status status="PASS" starttime="20211014 18:15:55.708" endtime="20211014 18:15:56.684"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status} == 200</arg>
+<arg>Fail</arg>
+<arg>Test Failed: Got 200 response code for invalid credentials</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20211014 18:15:56.684" endtime="20211014 18:15:56.685"/>
+</kw>
+<status status="PASS" starttime="20211014 18:15:55.707" endtime="20211014 18:15:56.685"/>
+</iter>
+<iter>
+<var name="${data}">/admin/token/dev20@yopmail.com/Test@122</var>
+<kw name="Check Login User" library="symptom_registration">
+<var>${status}</var>
+<arg>${data}</arg>
+<msg timestamp="20211014 18:15:57.733" level="INFO">${status} = 500</msg>
+<status status="PASS" starttime="20211014 18:15:56.686" endtime="20211014 18:15:57.733"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status} == 200</arg>
+<arg>Fail</arg>
+<arg>Test Failed: Got 200 response code for invalid credentials</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20211014 18:15:57.733" endtime="20211014 18:15:57.734"/>
+</kw>
+<status status="PASS" starttime="20211014 18:15:56.685" endtime="20211014 18:15:57.734"/>
+</iter>
+<iter>
+<var name="${data}">/user/token/dev120@yopmail.com/Test@122</var>
+<kw name="Check Login User" library="symptom_registration">
+<var>${status}</var>
+<arg>${data}</arg>
+<msg timestamp="20211014 18:15:58.607" level="INFO">${status} = 403</msg>
+<status status="PASS" starttime="20211014 18:15:57.734" endtime="20211014 18:15:58.607"/>
+</kw>
+<kw name="Run Keyword If" library="BuiltIn">
+<arg>${status} == 200</arg>
+<arg>Fail</arg>
+<arg>Test Failed: Got 200 response code for invalid credentials</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" starttime="20211014 18:15:58.607" endtime="20211014 18:15:58.608"/>
+</kw>
+<status status="PASS" starttime="20211014 18:15:57.734" endtime="20211014 18:15:58.608"/>
+</iter>
+<status status="PASS" starttime="20211014 18:15:55.707" endtime="20211014 18:15:58.608"/>
+</for>
+<tag>Sanity</tag>
+<status status="PASS" starttime="20211014 18:15:55.702" endtime="20211014 18:15:58.608"/>
+</test>
+<test id="s1-t2" name="Validate Symptoms Registration Without Having Symptom Report Details">
+<kw name="Get Symptom Regd Feeling Ok True Case" library="Symptom_Reporting_Payload">
+<var>${Symptom_Regd_true_case}</var>
+<doc>:return:</doc>
+<msg timestamp="20211014 18:15:58.611" level="INFO">${Symptom_Regd_true_case} = {'is_feeling_ok': True, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'symptom_report_details': []}</msg>
+<status status="PASS" starttime="20211014 18:15:58.610" endtime="20211014 18:15:58.611"/>
+</kw>
+<kw name="Get Symptom Registered By Date" library="Symptom_Reporting_Payload">
+<var>${symptom_by_date_payload}</var>
+<doc>:return: Returns the payload for symptom registered by date having correct date time and time zone</doc>
+<msg timestamp="20211014 18:15:58.612" level="INFO">${symptom_by_date_payload} = {'current_date': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown'}</msg>
+<status status="PASS" starttime="20211014 18:15:58.612" endtime="20211014 18:15:58.612"/>
+</kw>
+<kw name="Symptom Registration" library="API_Helper">
+<var>${sympotom_regd_obj}</var>
+<arg>${Symptom_Regd_true_case}</arg>
+<doc>Register symptoms</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${Header}</var>
+<arg>Authorization=${user_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211014 18:15:58.614" level="INFO">${Header} = {'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjo...</msg>
+<status status="PASS" starttime="20211014 18:15:58.613" endtime="20211014 18:15:58.614"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url</arg>
+<arg>/zone/1/user/symptoms</arg>
+<arg>json=${symptom_regd}</arg>
+<arg>headers=${Header}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20211014 18:15:59.080" level="INFO">POST Request : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms 
+ path_url=/zone/1/user/symptoms 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS00YjM3LTg4NzctYmZmMjNhOGNkOWRiIiwiYXVkIjoiMmVyaG5qdG8wc21wcWUxMzhhaTRqc210dGMiLCJldmVudF9pZCI6IjI3Mzg4ZjhkLTA3M2EtNGJlMy1iODVkLWI4NWFhNTI2NWU3YSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjM0MjE1NTU1LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV81Q3J6QTNLSTUiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGV2MTIyQHlvcG1haWwuY29tIiwiZXhwIjoxNjM0MzAxOTU1LCJpYXQiOjE2MzQyMTU1NTUsImp0aSI6ImU5NjUzZTM2LTQ1OGItNDY2ZS04OWM3LWI4NmQ2MDEyMThhYiIsImVtYWlsIjoiZGV2MTIyQHlvcG1haWwuY29tIn0.C24ba3S_cVgvmyJ0rkRbkd-fUuQ53t0G-py8CDTOLvYrchCtyuMOkGhchqPz7D-5XBuWhPlV_Nk2Pok9qpjJsN7JHyu9z82bMG6ujhQxnfO4XO0phFImzAwHNGh8ByWiKvpBcjwq_k7bXrwubwDGl3MF5PU9OJx_5PJtctE4lCEiek25-XUKhfdDS71uSH-0crw4On25a8sePnyWKRHVej5Tq2Pzy4f3zii3AqVGopl3f51UQ0QzlGLqqn0J5DknvAelDUVvu5jKVB8thZcrWYWLAEd4G48Puo1iTPMX_eV1Hfr2BZ27zWczi5H-UXaAAkFFVgjPGGJQ9b0HN1Z-SQ', 'Content-Type': 'application/json', 'Content-Length': '131'} 
+ body=b'{"is_feeling_ok": true, "reported_on": "2021-10-14 18:15:53", "current_time_zone": "Africa/Freetown", "symptom_report_details": []}' 
+ </msg>
+<msg timestamp="20211014 18:15:59.080" level="INFO">POST Response : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms 
+ status=201, reason= 
+ headers={'Date': 'Thu, 14 Oct 2021 12:45:58 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx/1.20.0', 'Set-Cookie': 'JSESSIONID=0DD8B16D77F1D56D023A3D100ED1C563; Path=/; HttpOnly', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'X-Frame-Options': 'DENY'} 
+ body={"is_feeling_ok":true,"reported_on":"2021-10-14 18:15:53","current_time_zone":"Africa/Freetown","reported_on_utc":"2021-10-14 12:45:58","symptom_report_details":[]} 
+ </msg>
+<msg timestamp="20211014 18:15:59.080" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20211014 18:15:58.614" endtime="20211014 18:15:59.080"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20211014 18:15:59.082" level="INFO">${status_code} = 201</msg>
+<status status="PASS" starttime="20211014 18:15:59.080" endtime="20211014 18:15:59.082"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>201</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211014 18:15:59.082" endtime="20211014 18:15:59.082"/>
+</kw>
+<msg timestamp="20211014 18:15:59.083" level="INFO">${sympotom_regd_obj} = {'is_feeling_ok': True, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:45:58', 'symptom_report_details': []}</msg>
+<status status="PASS" starttime="20211014 18:15:58.613" endtime="20211014 18:15:59.083"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${sympotom_regd_obj}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211014 18:15:59.084" level="INFO">{'is_feeling_ok': True, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:45:58', 'symptom_report_details': []}</msg>
+<status status="PASS" starttime="20211014 18:15:59.084" endtime="20211014 18:15:59.084"/>
+</kw>
+<kw name="Symptom Registered By Date" library="API_Helper">
+<var>${symptom_by_date_obj}</var>
+<arg>${symptom_by_date_payload}</arg>
+<doc>Check symptom registration response by date</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${Header}</var>
+<arg>Authorization=${user_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211014 18:15:59.086" level="INFO">${Header} = {'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjo...</msg>
+<status status="PASS" starttime="20211014 18:15:59.085" endtime="20211014 18:15:59.086"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url</arg>
+<arg>/zone/1/user/symptoms/by-date</arg>
+<arg>json=${symptom_by_date}</arg>
+<arg>headers=${Header}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20211014 18:15:59.550" level="INFO">POST Request : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms/by-date 
+ path_url=/zone/1/user/symptoms/by-date 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS00YjM3LTg4NzctYmZmMjNhOGNkOWRiIiwiYXVkIjoiMmVyaG5qdG8wc21wcWUxMzhhaTRqc210dGMiLCJldmVudF9pZCI6IjI3Mzg4ZjhkLTA3M2EtNGJlMy1iODVkLWI4NWFhNTI2NWU3YSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjM0MjE1NTU1LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV81Q3J6QTNLSTUiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGV2MTIyQHlvcG1haWwuY29tIiwiZXhwIjoxNjM0MzAxOTU1LCJpYXQiOjE2MzQyMTU1NTUsImp0aSI6ImU5NjUzZTM2LTQ1OGItNDY2ZS04OWM3LWI4NmQ2MDEyMThhYiIsImVtYWlsIjoiZGV2MTIyQHlvcG1haWwuY29tIn0.C24ba3S_cVgvmyJ0rkRbkd-fUuQ53t0G-py8CDTOLvYrchCtyuMOkGhchqPz7D-5XBuWhPlV_Nk2Pok9qpjJsN7JHyu9z82bMG6ujhQxnfO4XO0phFImzAwHNGh8ByWiKvpBcjwq_k7bXrwubwDGl3MF5PU9OJx_5PJtctE4lCEiek25-XUKhfdDS71uSH-0crw4On25a8sePnyWKRHVej5Tq2Pzy4f3zii3AqVGopl3f51UQ0QzlGLqqn0J5DknvAelDUVvu5jKVB8thZcrWYWLAEd4G48Puo1iTPMX_eV1Hfr2BZ27zWczi5H-UXaAAkFFVgjPGGJQ9b0HN1Z-SQ', 'Content-Type': 'application/json', 'Cookie': 'JSESSIONID=0DD8B16D77F1D56D023A3D100ED1C563', 'Content-Length': '79'} 
+ body=b'{"current_date": "2021-10-14 18:15:53", "current_time_zone": "Africa/Freetown"}' 
+ </msg>
+<msg timestamp="20211014 18:15:59.551" level="INFO">POST Response : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms/by-date 
+ status=200, reason= 
+ headers={'Date': 'Thu, 14 Oct 2021 12:45:59 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx/1.20.0', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'X-Frame-Options': 'DENY'} 
+ body={"is_feeling_ok":true,"reported_on":"2021-10-14 18:15:53","current_time_zone":"Africa/Freetown","reported_on_utc":"2021-10-14 12:45:58","symptom_report_details":[]} 
+ </msg>
+<msg timestamp="20211014 18:15:59.551" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211014 18:15:59.086" endtime="20211014 18:15:59.551"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20211014 18:15:59.557" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20211014 18:15:59.552" endtime="20211014 18:15:59.557"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211014 18:15:59.557" endtime="20211014 18:15:59.558"/>
+</kw>
+<msg timestamp="20211014 18:15:59.560" level="INFO">${symptom_by_date_obj} = {'is_feeling_ok': True, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:45:58', 'symptom_report_details': []}</msg>
+<status status="PASS" starttime="20211014 18:15:59.085" endtime="20211014 18:15:59.560"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${symptom_by_date_obj}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211014 18:15:59.561" level="INFO">{'is_feeling_ok': True, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:45:58', 'symptom_report_details': []}</msg>
+<status status="PASS" starttime="20211014 18:15:59.560" endtime="20211014 18:15:59.561"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Validate Symptom Regd By Date Response</arg>
+<arg>${sympotom_regd_obj}</arg>
+<arg>${symptom_by_date_obj}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Validate Symptom Regd By Date Response" library="symptom_registration">
+<arg>${sympotom_regd_obj}</arg>
+<arg>${symptom_by_date_obj}</arg>
+<doc>Function to validate the response of symptom registration and symptom registration by date.
+:param symptom_regd_obj:
+:param symptom_regd_by_date_obj:
+:return: None</doc>
+<msg timestamp="20211014 18:15:59.563" level="INFO">The Symptom Regd. Response: True matches with Symptom Regd. By Date Response: True</msg>
+<msg timestamp="20211014 18:15:59.563" level="INFO">The Symptom Regd. Response: 2021-10-14 18:15:53 matches with Symptom Regd. By Date Response: 2021-10-14 18:15:53</msg>
+<msg timestamp="20211014 18:15:59.563" level="INFO">The Symptom Regd. Response: Africa/Freetown matches with Symptom Regd. By Date Response: Africa/Freetown</msg>
+<msg timestamp="20211014 18:15:59.563" level="INFO">The Symptom Regd. Response: 2021-10-14 12:45:58 matches with Symptom Regd. By Date Response: 2021-10-14 12:45:58</msg>
+<status status="PASS" starttime="20211014 18:15:59.562" endtime="20211014 18:15:59.563"/>
+</kw>
+<status status="PASS" starttime="20211014 18:15:59.562" endtime="20211014 18:15:59.563"/>
+</kw>
+<tag>Sanity</tag>
+<status status="PASS" starttime="20211014 18:15:58.609" endtime="20211014 18:15:59.563"/>
+</test>
+<test id="s1-t3" name="Validate Symptoms Registration Having Symptom Report Details">
+<kw name="Get Symptom Regd Feeling Ok False Case" library="Symptom_Reporting_Payload">
+<var>${Symptom_Regd_false_case}</var>
+<doc>:return:</doc>
+<msg timestamp="20211014 18:15:59.566" level="INFO">${Symptom_Regd_false_case} = {'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symptom': 'COUGH'}, {'symptom': 'SHORTNESS OF ...</msg>
+<status status="PASS" starttime="20211014 18:15:59.565" endtime="20211014 18:15:59.566"/>
+</kw>
+<kw name="Get Symptom Registered By Date" library="Symptom_Reporting_Payload">
+<var>${symptom_by_date_payload}</var>
+<doc>:return: Returns the payload for symptom registered by date having correct date time and time zone</doc>
+<msg timestamp="20211014 18:15:59.567" level="INFO">${symptom_by_date_payload} = {'current_date': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown'}</msg>
+<status status="PASS" starttime="20211014 18:15:59.566" endtime="20211014 18:15:59.567"/>
+</kw>
+<kw name="Symptom Registration" library="API_Helper">
+<var>${sympotom_regd_obj_false}</var>
+<arg>${Symptom_Regd_false_case}</arg>
+<doc>Register symptoms</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${Header}</var>
+<arg>Authorization=${user_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211014 18:15:59.573" level="INFO">${Header} = {'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjo...</msg>
+<status status="PASS" starttime="20211014 18:15:59.571" endtime="20211014 18:15:59.574"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url</arg>
+<arg>/zone/1/user/symptoms</arg>
+<arg>json=${symptom_regd}</arg>
+<arg>headers=${Header}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20211014 18:16:00.057" level="INFO">POST Request : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms 
+ path_url=/zone/1/user/symptoms 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS00YjM3LTg4NzctYmZmMjNhOGNkOWRiIiwiYXVkIjoiMmVyaG5qdG8wc21wcWUxMzhhaTRqc210dGMiLCJldmVudF9pZCI6IjI3Mzg4ZjhkLTA3M2EtNGJlMy1iODVkLWI4NWFhNTI2NWU3YSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjM0MjE1NTU1LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV81Q3J6QTNLSTUiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGV2MTIyQHlvcG1haWwuY29tIiwiZXhwIjoxNjM0MzAxOTU1LCJpYXQiOjE2MzQyMTU1NTUsImp0aSI6ImU5NjUzZTM2LTQ1OGItNDY2ZS04OWM3LWI4NmQ2MDEyMThhYiIsImVtYWlsIjoiZGV2MTIyQHlvcG1haWwuY29tIn0.C24ba3S_cVgvmyJ0rkRbkd-fUuQ53t0G-py8CDTOLvYrchCtyuMOkGhchqPz7D-5XBuWhPlV_Nk2Pok9qpjJsN7JHyu9z82bMG6ujhQxnfO4XO0phFImzAwHNGh8ByWiKvpBcjwq_k7bXrwubwDGl3MF5PU9OJx_5PJtctE4lCEiek25-XUKhfdDS71uSH-0crw4On25a8sePnyWKRHVej5Tq2Pzy4f3zii3AqVGopl3f51UQ0QzlGLqqn0J5DknvAelDUVvu5jKVB8thZcrWYWLAEd4G48Puo1iTPMX_eV1Hfr2BZ27zWczi5H-UXaAAkFFVgjPGGJQ9b0HN1Z-SQ', 'Content-Type': 'application/json', 'Cookie': 'JSESSIONID=0DD8B16D77F1D56D023A3D100ED1C563', 'Content-Length': '297'} 
+ body=b'{"is_feeling_ok": false, "reported_on": "2021-10-14 18:15:53", "current_time_zone": "Africa/Freetown", "symptom_report_details": [{"symptom": "FEVER"}, {"symptom": "COUGH"}, {"symptom": "SHORTNESS OF BREATH"}, {"symptom": "FATIGUE"}, {"symptom": "MUSCLE OR BODY ACHES"}, {"symptom": "HEADACHES"}]}' 
+ </msg>
+<msg timestamp="20211014 18:16:00.058" level="INFO">POST Response : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms 
+ status=201, reason= 
+ headers={'Date': 'Thu, 14 Oct 2021 12:45:59 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx/1.20.0', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'X-Frame-Options': 'DENY'} 
+ body={"is_feeling_ok":false,"reported_on":"2021-10-14 18:15:53","current_time_zone":"Africa/Freetown","reported_on_utc":"2021-10-14 12:45:59","symptom_report_details":[{"symptom":"FEVER"},{"symptom":"COUGH"},{"symptom":"SHORTNESS OF BREATH"},{"symptom":"FATIGUE"},{"symptom":"MUSCLE OR BODY ACHES"},{"symptom":"HEADACHES"}]} 
+ </msg>
+<msg timestamp="20211014 18:16:00.058" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20211014 18:15:59.575" endtime="20211014 18:16:00.058"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20211014 18:16:00.060" level="INFO">${status_code} = 201</msg>
+<status status="PASS" starttime="20211014 18:16:00.058" endtime="20211014 18:16:00.060"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>201</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211014 18:16:00.060" endtime="20211014 18:16:00.060"/>
+</kw>
+<msg timestamp="20211014 18:16:00.062" level="INFO">${sympotom_regd_obj_false} = {'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:45:59', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symp...</msg>
+<status status="PASS" starttime="20211014 18:15:59.568" endtime="20211014 18:16:00.062"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${sympotom_regd_obj_false}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211014 18:16:00.062" level="INFO">{'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:45:59', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symptom': 'COUGH'}, {'symptom': 'SHORTNESS OF BREATH'}, {'symptom': 'FATIGUE'}, {'symptom': 'MUSCLE OR BODY ACHES'}, {'symptom': 'HEADACHES'}]}</msg>
+<status status="PASS" starttime="20211014 18:16:00.062" endtime="20211014 18:16:00.063"/>
+</kw>
+<kw name="Symptom Registered By Date" library="API_Helper">
+<var>${symptom_by_date_obj_false}</var>
+<arg>${symptom_by_date_payload}</arg>
+<doc>Check symptom registration response by date</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${Header}</var>
+<arg>Authorization=${user_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211014 18:16:00.064" level="INFO">${Header} = {'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjo...</msg>
+<status status="PASS" starttime="20211014 18:16:00.064" endtime="20211014 18:16:00.064"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url</arg>
+<arg>/zone/1/user/symptoms/by-date</arg>
+<arg>json=${symptom_by_date}</arg>
+<arg>headers=${Header}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20211014 18:16:00.531" level="INFO">POST Request : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms/by-date 
+ path_url=/zone/1/user/symptoms/by-date 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS00YjM3LTg4NzctYmZmMjNhOGNkOWRiIiwiYXVkIjoiMmVyaG5qdG8wc21wcWUxMzhhaTRqc210dGMiLCJldmVudF9pZCI6IjI3Mzg4ZjhkLTA3M2EtNGJlMy1iODVkLWI4NWFhNTI2NWU3YSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjM0MjE1NTU1LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV81Q3J6QTNLSTUiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGV2MTIyQHlvcG1haWwuY29tIiwiZXhwIjoxNjM0MzAxOTU1LCJpYXQiOjE2MzQyMTU1NTUsImp0aSI6ImU5NjUzZTM2LTQ1OGItNDY2ZS04OWM3LWI4NmQ2MDEyMThhYiIsImVtYWlsIjoiZGV2MTIyQHlvcG1haWwuY29tIn0.C24ba3S_cVgvmyJ0rkRbkd-fUuQ53t0G-py8CDTOLvYrchCtyuMOkGhchqPz7D-5XBuWhPlV_Nk2Pok9qpjJsN7JHyu9z82bMG6ujhQxnfO4XO0phFImzAwHNGh8ByWiKvpBcjwq_k7bXrwubwDGl3MF5PU9OJx_5PJtctE4lCEiek25-XUKhfdDS71uSH-0crw4On25a8sePnyWKRHVej5Tq2Pzy4f3zii3AqVGopl3f51UQ0QzlGLqqn0J5DknvAelDUVvu5jKVB8thZcrWYWLAEd4G48Puo1iTPMX_eV1Hfr2BZ27zWczi5H-UXaAAkFFVgjPGGJQ9b0HN1Z-SQ', 'Content-Type': 'application/json', 'Cookie': 'JSESSIONID=0DD8B16D77F1D56D023A3D100ED1C563', 'Content-Length': '79'} 
+ body=b'{"current_date": "2021-10-14 18:15:53", "current_time_zone": "Africa/Freetown"}' 
+ </msg>
+<msg timestamp="20211014 18:16:00.531" level="INFO">POST Response : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms/by-date 
+ status=200, reason= 
+ headers={'Date': 'Thu, 14 Oct 2021 12:46:00 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx/1.20.0', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'X-Frame-Options': 'DENY'} 
+ body={"is_feeling_ok":false,"reported_on":"2021-10-14 18:15:53","current_time_zone":"Africa/Freetown","reported_on_utc":"2021-10-14 12:45:59","symptom_report_details":[{"symptom":"FEVER"},{"symptom":"SHORTNESS OF BREATH"},{"symptom":"MUSCLE OR BODY ACHES"},{"symptom":"HEADACHES"},{"symptom":"COUGH"},{"symptom":"FATIGUE"}]} 
+ </msg>
+<msg timestamp="20211014 18:16:00.532" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211014 18:16:00.065" endtime="20211014 18:16:00.532"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20211014 18:16:00.533" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20211014 18:16:00.532" endtime="20211014 18:16:00.533"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211014 18:16:00.533" endtime="20211014 18:16:00.533"/>
+</kw>
+<msg timestamp="20211014 18:16:00.534" level="INFO">${symptom_by_date_obj_false} = {'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:45:59', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symp...</msg>
+<status status="PASS" starttime="20211014 18:16:00.063" endtime="20211014 18:16:00.534"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${symptom_by_date_obj_false}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211014 18:16:00.535" level="INFO">{'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:45:59', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symptom': 'SHORTNESS OF BREATH'}, {'symptom': 'MUSCLE OR BODY ACHES'}, {'symptom': 'HEADACHES'}, {'symptom': 'COUGH'}, {'symptom': 'FATIGUE'}]}</msg>
+<status status="PASS" starttime="20211014 18:16:00.535" endtime="20211014 18:16:00.535"/>
+</kw>
+<kw name="Run Keyword" library="BuiltIn">
+<arg>Validate Symptom Regd By Date Response</arg>
+<arg>${sympotom_regd_obj_false}</arg>
+<arg>${symptom_by_date_obj_false}</arg>
+<doc>Executes the given keyword with the given arguments.</doc>
+<kw name="Validate Symptom Regd By Date Response" library="symptom_registration">
+<arg>${sympotom_regd_obj_false}</arg>
+<arg>${symptom_by_date_obj_false}</arg>
+<doc>Function to validate the response of symptom registration and symptom registration by date.
+:param symptom_regd_obj:
+:param symptom_regd_by_date_obj:
+:return: None</doc>
+<msg timestamp="20211014 18:16:00.539" level="INFO">The Symptom Regd. Response: False matches with Symptom Regd. By Date Response: False</msg>
+<msg timestamp="20211014 18:16:00.539" level="INFO">The Symptom Regd. Response: 2021-10-14 18:15:53 matches with Symptom Regd. By Date Response: 2021-10-14 18:15:53</msg>
+<msg timestamp="20211014 18:16:00.540" level="INFO">The Symptom Regd. Response: Africa/Freetown matches with Symptom Regd. By Date Response: Africa/Freetown</msg>
+<msg timestamp="20211014 18:16:00.540" level="INFO">The Symptom Regd. Response: 2021-10-14 12:45:59 matches with Symptom Regd. By Date Response: 2021-10-14 12:45:59</msg>
+<msg timestamp="20211014 18:16:00.540" level="INFO">Pass: Symptom Regd report rsponse: [{'symptom': 'FEVER'}, {'symptom': 'COUGH'}, {'symptom': 'SHORTNESS OF BREATH'}, {'symptom': 'FATIGUE'}, {'symptom': 'MUSCLE OR BODY ACHES'}, {'symptom': 'HEADACHES'}] matches with Symptom Regd By Date response: [{'symptom': 'FEVER'}, {'symptom': 'SHORTNESS OF BREATH'}, {'symptom': 'MUSCLE OR BODY ACHES'}, {'symptom': 'HEADACHES'}, {'symptom': 'COUGH'}, {'symptom': 'FATIGUE'}]</msg>
+<status status="PASS" starttime="20211014 18:16:00.538" endtime="20211014 18:16:00.540"/>
+</kw>
+<status status="PASS" starttime="20211014 18:16:00.536" endtime="20211014 18:16:00.540"/>
+</kw>
+<tag>Sanity</tag>
+<status status="PASS" starttime="20211014 18:15:59.564" endtime="20211014 18:16:00.541"/>
+</test>
+<test id="s1-t4" name="Validate Symptoms Registration Having Wrong Symptom Report Details">
+<kw name="Get Symptom Regd Feeling Ok False Case" library="Symptom_Reporting_Payload">
+<var>${Symptom_Regd_false_case}</var>
+<doc>:return:</doc>
+<msg timestamp="20211014 18:16:00.543" level="INFO">${Symptom_Regd_false_case} = {'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symptom': 'COUGH'}, {'symptom': 'SHORTNESS OF ...</msg>
+<status status="PASS" starttime="20211014 18:16:00.542" endtime="20211014 18:16:00.543"/>
+</kw>
+<kw name="Get Symptom Regd Hvaving Wrong Symptom Report Details" library="Symptom_Reporting_Payload">
+<var>${wrong_symptom_report_details}</var>
+<doc>:return:</doc>
+<msg timestamp="20211014 18:16:00.544" level="INFO">${wrong_symptom_report_details} = {'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'America/Chicago', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symptom': 'COUGH'}, {'symptom': 'SHORTNESS OF ...</msg>
+<status status="PASS" starttime="20211014 18:16:00.543" endtime="20211014 18:16:00.544"/>
+</kw>
+<kw name="Get Symptom Registered By Date" library="Symptom_Reporting_Payload">
+<var>${symptom_by_date_payload}</var>
+<doc>:return: Returns the payload for symptom registered by date having correct date time and time zone</doc>
+<msg timestamp="20211014 18:16:00.544" level="INFO">${symptom_by_date_payload} = {'current_date': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown'}</msg>
+<status status="PASS" starttime="20211014 18:16:00.544" endtime="20211014 18:16:00.544"/>
+</kw>
+<kw name="Symptom Registration" library="API_Helper">
+<var>${sympotom_regd_obj_false}</var>
+<arg>${Symptom_Regd_false_case}</arg>
+<doc>Register symptoms</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${Header}</var>
+<arg>Authorization=${user_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211014 18:16:00.546" level="INFO">${Header} = {'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjo...</msg>
+<status status="PASS" starttime="20211014 18:16:00.545" endtime="20211014 18:16:00.546"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url</arg>
+<arg>/zone/1/user/symptoms</arg>
+<arg>json=${symptom_regd}</arg>
+<arg>headers=${Header}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20211014 18:16:01.034" level="INFO">POST Request : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms 
+ path_url=/zone/1/user/symptoms 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS00YjM3LTg4NzctYmZmMjNhOGNkOWRiIiwiYXVkIjoiMmVyaG5qdG8wc21wcWUxMzhhaTRqc210dGMiLCJldmVudF9pZCI6IjI3Mzg4ZjhkLTA3M2EtNGJlMy1iODVkLWI4NWFhNTI2NWU3YSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjM0MjE1NTU1LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV81Q3J6QTNLSTUiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGV2MTIyQHlvcG1haWwuY29tIiwiZXhwIjoxNjM0MzAxOTU1LCJpYXQiOjE2MzQyMTU1NTUsImp0aSI6ImU5NjUzZTM2LTQ1OGItNDY2ZS04OWM3LWI4NmQ2MDEyMThhYiIsImVtYWlsIjoiZGV2MTIyQHlvcG1haWwuY29tIn0.C24ba3S_cVgvmyJ0rkRbkd-fUuQ53t0G-py8CDTOLvYrchCtyuMOkGhchqPz7D-5XBuWhPlV_Nk2Pok9qpjJsN7JHyu9z82bMG6ujhQxnfO4XO0phFImzAwHNGh8ByWiKvpBcjwq_k7bXrwubwDGl3MF5PU9OJx_5PJtctE4lCEiek25-XUKhfdDS71uSH-0crw4On25a8sePnyWKRHVej5Tq2Pzy4f3zii3AqVGopl3f51UQ0QzlGLqqn0J5DknvAelDUVvu5jKVB8thZcrWYWLAEd4G48Puo1iTPMX_eV1Hfr2BZ27zWczi5H-UXaAAkFFVgjPGGJQ9b0HN1Z-SQ', 'Content-Type': 'application/json', 'Cookie': 'JSESSIONID=0DD8B16D77F1D56D023A3D100ED1C563', 'Content-Length': '297'} 
+ body=b'{"is_feeling_ok": false, "reported_on": "2021-10-14 18:15:53", "current_time_zone": "Africa/Freetown", "symptom_report_details": [{"symptom": "FEVER"}, {"symptom": "COUGH"}, {"symptom": "SHORTNESS OF BREATH"}, {"symptom": "FATIGUE"}, {"symptom": "MUSCLE OR BODY ACHES"}, {"symptom": "HEADACHES"}]}' 
+ </msg>
+<msg timestamp="20211014 18:16:01.035" level="INFO">POST Response : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms 
+ status=201, reason= 
+ headers={'Date': 'Thu, 14 Oct 2021 12:46:00 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx/1.20.0', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'X-Frame-Options': 'DENY'} 
+ body={"is_feeling_ok":false,"reported_on":"2021-10-14 18:15:53","current_time_zone":"Africa/Freetown","reported_on_utc":"2021-10-14 12:46:00","symptom_report_details":[{"symptom":"FEVER"},{"symptom":"COUGH"},{"symptom":"SHORTNESS OF BREATH"},{"symptom":"FATIGUE"},{"symptom":"MUSCLE OR BODY ACHES"},{"symptom":"HEADACHES"}]} 
+ </msg>
+<msg timestamp="20211014 18:16:01.035" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<status status="PASS" starttime="20211014 18:16:00.546" endtime="20211014 18:16:01.035"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20211014 18:16:01.037" level="INFO">${status_code} = 201</msg>
+<status status="PASS" starttime="20211014 18:16:01.035" endtime="20211014 18:16:01.037"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>201</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211014 18:16:01.037" endtime="20211014 18:16:01.038"/>
+</kw>
+<msg timestamp="20211014 18:16:01.039" level="INFO">${sympotom_regd_obj_false} = {'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:46:00', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symp...</msg>
+<status status="PASS" starttime="20211014 18:16:00.545" endtime="20211014 18:16:01.039"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${sympotom_regd_obj_false}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211014 18:16:01.041" level="INFO">{'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:46:00', 'symptom_report_details': [{'symptom': 'FEVER'}, {'symptom': 'COUGH'}, {'symptom': 'SHORTNESS OF BREATH'}, {'symptom': 'FATIGUE'}, {'symptom': 'MUSCLE OR BODY ACHES'}, {'symptom': 'HEADACHES'}]}</msg>
+<status status="PASS" starttime="20211014 18:16:01.040" endtime="20211014 18:16:01.041"/>
+</kw>
+<kw name="Symptom Registered By Date" library="API_Helper">
+<var>${symptom_by_date_obj_false}</var>
+<arg>${symptom_by_date_payload}</arg>
+<doc>Check symptom registration response by date</doc>
+<kw name="Create Dictionary" library="BuiltIn">
+<var>${Header}</var>
+<arg>Authorization=${user_token}</arg>
+<arg>Content-Type=application/json</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<msg timestamp="20211014 18:16:01.043" level="INFO">${Header} = {'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjo...</msg>
+<status status="PASS" starttime="20211014 18:16:01.042" endtime="20211014 18:16:01.043"/>
+</kw>
+<kw name="POST On Session" library="RequestsLibrary">
+<var>${response}</var>
+<arg>url</arg>
+<arg>/zone/1/user/symptoms/by-date</arg>
+<arg>json=${symptom_by_date}</arg>
+<arg>headers=${Header}</arg>
+<doc>Sends a POST request on a previously created HTTP Session.</doc>
+<msg timestamp="20211014 18:16:01.528" level="INFO">POST Request : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms/by-date 
+ path_url=/zone/1/user/symptoms/by-date 
+ headers={'User-Agent': 'python-requests/2.26.0', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJraWQiOiJvZ3JpSWtcL1dzXC9GRElHUnRvczNwNWt5R0ZXeFVxVjhSREtmZ21zU0JodjQ9IiwiYWxnIjoiUlMyNTYifQ.eyJvcmlnaW5fanRpIjoiZTk0ZTI3NmItZGI2MS00MjEzLWFkNGEtNDE0MTllODQyM2E1Iiwic3ViIjoiMzIxMDA1Y2QtM2I1MS00YjM3LTg4NzctYmZmMjNhOGNkOWRiIiwiYXVkIjoiMmVyaG5qdG8wc21wcWUxMzhhaTRqc210dGMiLCJldmVudF9pZCI6IjI3Mzg4ZjhkLTA3M2EtNGJlMy1iODVkLWI4NWFhNTI2NWU3YSIsInRva2VuX3VzZSI6ImlkIiwiYXV0aF90aW1lIjoxNjM0MjE1NTU1LCJpc3MiOiJodHRwczpcL1wvY29nbml0by1pZHAudXMtZWFzdC0xLmFtYXpvbmF3cy5jb21cL3VzLWVhc3QtMV81Q3J6QTNLSTUiLCJjb2duaXRvOnVzZXJuYW1lIjoiZGV2MTIyQHlvcG1haWwuY29tIiwiZXhwIjoxNjM0MzAxOTU1LCJpYXQiOjE2MzQyMTU1NTUsImp0aSI6ImU5NjUzZTM2LTQ1OGItNDY2ZS04OWM3LWI4NmQ2MDEyMThhYiIsImVtYWlsIjoiZGV2MTIyQHlvcG1haWwuY29tIn0.C24ba3S_cVgvmyJ0rkRbkd-fUuQ53t0G-py8CDTOLvYrchCtyuMOkGhchqPz7D-5XBuWhPlV_Nk2Pok9qpjJsN7JHyu9z82bMG6ujhQxnfO4XO0phFImzAwHNGh8ByWiKvpBcjwq_k7bXrwubwDGl3MF5PU9OJx_5PJtctE4lCEiek25-XUKhfdDS71uSH-0crw4On25a8sePnyWKRHVej5Tq2Pzy4f3zii3AqVGopl3f51UQ0QzlGLqqn0J5DknvAelDUVvu5jKVB8thZcrWYWLAEd4G48Puo1iTPMX_eV1Hfr2BZ27zWczi5H-UXaAAkFFVgjPGGJQ9b0HN1Z-SQ', 'Content-Type': 'application/json', 'Cookie': 'JSESSIONID=0DD8B16D77F1D56D023A3D100ED1C563', 'Content-Length': '79'} 
+ body=b'{"current_date": "2021-10-14 18:15:53", "current_time_zone": "Africa/Freetown"}' 
+ </msg>
+<msg timestamp="20211014 18:16:01.529" level="INFO">POST Response : url=https://dev.np-testzonehealth.com/zone/1/user/symptoms/by-date 
+ status=200, reason= 
+ headers={'Date': 'Thu, 14 Oct 2021 12:46:01 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'Server': 'nginx/1.20.0', 'X-Content-Type-Options': 'nosniff', 'X-XSS-Protection': '1; mode=block', 'Cache-Control': 'no-cache, no-store, max-age=0, must-revalidate', 'Pragma': 'no-cache', 'Expires': '0', 'X-Frame-Options': 'DENY'} 
+ body={"is_feeling_ok":false,"reported_on":"2021-10-14 18:15:53","current_time_zone":"Africa/Freetown","reported_on_utc":"2021-10-14 12:46:00","symptom_report_details":[{"symptom":"HEADACHES"},{"symptom":"COUGH"},{"symptom":"FATIGUE"},{"symptom":"FEVER"},{"symptom":"SHORTNESS OF BREATH"},{"symptom":"MUSCLE OR BODY ACHES"}]} 
+ </msg>
+<msg timestamp="20211014 18:16:01.529" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<status status="PASS" starttime="20211014 18:16:01.043" endtime="20211014 18:16:01.529"/>
+</kw>
+<kw name="Convert To String" library="BuiltIn">
+<var>${status_code}</var>
+<arg>${response.status_code}</arg>
+<doc>Converts the given item to a Unicode string.</doc>
+<msg timestamp="20211014 18:16:01.531" level="INFO">${status_code} = 200</msg>
+<status status="PASS" starttime="20211014 18:16:01.530" endtime="20211014 18:16:01.531"/>
+</kw>
+<kw name="Should Be Equal" library="BuiltIn">
+<arg>${status_code}</arg>
+<arg>200</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" starttime="20211014 18:16:01.532" endtime="20211014 18:16:01.532"/>
+</kw>
+<msg timestamp="20211014 18:16:01.534" level="INFO">${symptom_by_date_obj_false} = {'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:46:00', 'symptom_report_details': [{'symptom': 'HEADACHES'}, {'...</msg>
+<status status="PASS" starttime="20211014 18:16:01.041" endtime="20211014 18:16:01.534"/>
+</kw>
+<kw name="Log" library="BuiltIn">
+<arg>${symptom_by_date_obj_false}</arg>
+<doc>Logs the given message with the given level.</doc>
+<msg timestamp="20211014 18:16:01.535" level="INFO">{'is_feeling_ok': False, 'reported_on': '2021-10-14 18:15:53', 'current_time_zone': 'Africa/Freetown', 'reported_on_utc': '2021-10-14 12:46:00', 'symptom_report_details': [{'symptom': 'HEADACHES'}, {'symptom': 'COUGH'}, {'symptom': 'FATIGUE'}, {'symptom': 'FEVER'}, {'symptom': 'SHORTNESS OF BREATH'}, {'symptom': 'MUSCLE OR BODY ACHES'}]}</msg>
+<status status="PASS" starttime="20211014 18:16:01.535" endtime="20211014 18:16:01.536"/>
+</kw>
+<kw name="Run Keyword And Ignore Error" library="BuiltIn">
+<arg>Validate Symptom Regd By Date Response</arg>
+<arg>${sympotom_regd_obj_false}</arg>
+<arg>${Symptom_Regd_false_case}</arg>
+<doc>Runs the given keyword with the given arguments and ignores possible error.</doc>
+<kw name="Validate Symptom Regd By Date Response" library="symptom_registration">
+<arg>${sympotom_regd_obj_false}</arg>
+<arg>${Symptom_Regd_false_case}</arg>
+<doc>Function to validate the response of symptom registration and symptom registration by date.
+:param symptom_regd_obj:
+:param symptom_regd_by_date_obj:
+:return: None</doc>
+<msg timestamp="20211014 18:16:01.538" level="INFO">The Symptom Regd. Response: False matches with Symptom Regd. By Date Response: False</msg>
+<msg timestamp="20211014 18:16:01.538" level="INFO">The Symptom Regd. Response: 2021-10-14 18:15:53 matches with Symptom Regd. By Date Response: 2021-10-14 18:15:53</msg>
+<msg timestamp="20211014 18:16:01.538" level="INFO">The Symptom Regd. Response: Africa/Freetown matches with Symptom Regd. By Date Response: Africa/Freetown</msg>
+<msg timestamp="20211014 18:16:01.554" level="FAIL">KeyError: 'reported_on_utc'</msg>
+<status status="FAIL" starttime="20211014 18:16:01.537" endtime="20211014 18:16:01.554"/>
+</kw>
+<status status="PASS" starttime="20211014 18:16:01.536" endtime="20211014 18:16:01.555"/>
+</kw>
+<tag>Sanity</tag>
+<status status="PASS" starttime="20211014 18:16:00.541" endtime="20211014 18:16:01.555"/>
+</test>
+<status status="PASS" starttime="20211014 18:15:51.214" endtime="20211014 18:16:01.556"/>
+</suite>
+<statistics>
+<total>
+<stat pass="4" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="4" fail="0" skip="0">Sanity</stat>
+</tag>
+<suite>
+<stat pass="4" fail="0" skip="0" id="s1" name="Symptom Reporting API Tests">Symptom Reporting API Tests</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
